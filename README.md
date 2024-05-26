@@ -27,7 +27,7 @@ git clone https://github.com/yugalkaushik/sparkle.git
 3. Install dependencies for both frontend and backend:
 
 
-4. Create a `.env` file in the `server` directory and set your environment variables.
+4. Create a `.env` file in the `backend` directory and set your environment variables.
 
 5. Start the backend server.
 
