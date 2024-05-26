@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Classic = ({ classicslides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === classicslides.length - 1 ? 0 : prevIndex + 1));
-  };
+const Classic = () => {
+  const [classicslides, setClassicSlides] = useState([]);
+  useEffect(() => {
+    const fetchClassicSlides = async () => {
+      try {
+        const response = await axios.get('/api/classicslides');
+        setClassicSlides(response.data);
+      } catch (error) {
+        console.error('Error fetching classic slides:', error);
+      }
+    };
+
+    
+    fetchClassicSlides();
+  }, []);
+
 
   return (
     <div className="relative ml-8 mr-8 mt-24 ">

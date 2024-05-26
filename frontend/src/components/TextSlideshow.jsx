@@ -1,9 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { slidesText } from '../assets/constants';
+import axios from 'axios';
 
 const TextSlideshow = () => {
+  const [slidesText, setSlidesText] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('slideIn');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/slides'); // Replace URL with your backend endpoint
+        setSlidesText(response.data);
+      } catch (error) {
+        console.error('Error fetching slides text:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

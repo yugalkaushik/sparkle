@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Popular = ({ slides }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const Popular = () => {
+  const [slides, setSlides] = useState([]);
 
-  const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === slides.length - 1 ? 0 : prevIndex + 1));
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/popular'); // Replace URL with your backend endpoint
+        setSlides(response.data);
+      } catch (error) {
+        console.error('Error fetching popular slides:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="relative ml-8 mr-8 mt-24 ">

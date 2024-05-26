@@ -1,8 +1,23 @@
-import { navLogo } from "../assets/images/index.js";
-import { hamburger, search, wishlist, cart } from "../assets/icons";
-import { navLinks } from "../assets/constants/index.js";
+import React, { useState, useEffect} from "react";
+import axios from "axios";
 
 const Nav = () => {
+
+  const [navLinks, setnavLinks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/navlinks'); // Replace URL with your backend endpoint
+        setNavLinks(response.data);
+      } catch (error) {
+        console.error('Error fetching navigation links:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="bg-gray-100 py-2 px-4 flex justify-end items-center text-sm">

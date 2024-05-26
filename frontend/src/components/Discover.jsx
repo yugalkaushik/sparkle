@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const Discover = ({ discoverslides }) => {
-  if (!discoverslides || discoverslides.length === 0) {
-    console.error('discoverslides is undefined or empty');
-    return null;
+
+const Discover = () => {
+  const [discoverslides, setDiscoverSlides] = useState([]);
+
+  useEffect(() => {
+    const fetchDiscoverSlides = async () => {
+      try {
+        const response = await axios.get('/api/discoverslides');
+        setDiscoverSlides(response.data);
+      } catch (error) {
+        console.error('Error fetching discover slides:', error);
+      }
+    };
+
+    fetchDiscoverSlides();
+  }, []);
+
+  if (discoverslides.length === 0) {
+    return <p>Loading...</p>;
   }
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const goToNextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === discoverslides.length - 1 ? 0 : prevIndex + 1));
-  };
 
   return (
     <div className="relative ml-8 mr-8 mt-24">
