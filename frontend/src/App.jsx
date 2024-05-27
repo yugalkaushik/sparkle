@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Nav from "./components/Nav";
 import TextSlideshow from "./components/TextSlideshow";
 import Mainimage from "./components/Mainimage";
 import Discover from "./components/Discover";
-import { slides } from "./assets/constants";
-import { discoverslides } from "./assets/constants";
-import { classicslides } from "./assets/constants";
 import Trends from "./components/Trends";
 import Popular from "./components/Popular";
 import Exclusive from "./components/Exclusive";
@@ -14,7 +12,8 @@ import FlipWords from "./components/Flipwords";
 import Footer from "./components/Footer";
 
 const App = () => {
-  const words = ["Modern", "Ethenic", "Western", "Classic"];
+  
+  const words = ["Modern", "Ethnic", "Western", "Classic"];
 
   return (
     <main className="relative pt-20">
@@ -23,29 +22,29 @@ const App = () => {
         <TextSlideshow />
       </section>
       <div className="flex justify-center items-center px-4 ml-4 mr-4 mt-6 mb-6">
-      <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-        Explore
-        <FlipWords words={words} />
-        Fashion Trends Now.
+        <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+          Explore
+          <FlipWords words={words} />
+          Fashion Trends Now.
+        </div>
       </div>
-    </div>
       <section>
         <Mainimage />
       </section>
       <section>
-        <Trends />
+        <Trends  />
       </section>
       <section>
-        <Discover discoverslides={discoverslides} />
+        <Discover />
       </section>
       <section>
-        <Popular slides={slides} />
+        <Popular />
       </section>
       <section>
         <Exclusive />
       </section>
       <section>
-        <Classic classicslides={classicslides} />
+        <Classic />
       </section>
       <section>
         <Footer />

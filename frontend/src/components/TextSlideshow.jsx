@@ -9,8 +9,9 @@ const TextSlideshow = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/slides'); // Replace URL with your backend endpoint
-        setSlidesText(response.data);
+        const response = await axios.get('http://localhost:5100/api/textslide');
+      console.log('Response data:', response.data);
+      setSlidesText(response.data);
       } catch (error) {
         console.error('Error fetching slides text:', error);
       }
@@ -42,6 +43,7 @@ const TextSlideshow = () => {
           }}
         >
           <p className="text-lg font-semibold">{slide.Heading}</p>
+          <p className="text-lg font-semibold">{slide.description}</p>
         </div>
       ))}
     </div>

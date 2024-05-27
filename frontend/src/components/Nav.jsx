@@ -1,15 +1,16 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
+import icons from '../assets/icons'
 
 const Nav = () => {
-
-  const [navLinks, setnavLinks] = useState([]);
+  const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/navlinks'); // Replace URL with your backend endpoint
-        setNavLinks(response.data);
+        const response = await axios.get('http://localhost:5100/api/navlinks');
+      console.log('Response data:', response.data);
+      setNavLinks(response.data);
       } catch (error) {
         console.error('Error fetching navigation links:', error);
       }
@@ -28,7 +29,7 @@ const Nav = () => {
       <div className="px-4 py">
         <nav className="flex justify-between items-center max-w-screen-xl mx-auto">
           <a href="/" className="px-0.1 ml-2">
-            <img src={navLogo} alt="logo" className="w-10 sm:w-14"/>
+            <img src={icons.navLogo} alt="logo" className="w-10 sm:w-14"/>
           </a>
           <ul className="hidden lg:flex gap-10">
             {navLinks.map((item) => (
@@ -43,11 +44,11 @@ const Nav = () => {
             ))}
           </ul>
           <div className="flex gap-7 items-center cursor-pointer">
-            <img src={search} alt="search" width={20} height={20} />
-            <img src={wishlist} alt="wishlist" width={20} height={20} />
-            <img src={cart} alt="cart" width={20} height={20} />
+            <img src={icons.search} alt="search" width={20} height={20} />
+            <img src={icons.wishlist} alt="wishlist" width={20} height={20} />
+            <img src={icons.cart} alt="cart" width={20} height={20} />
             <div className="block md:hidden">
-              <img src={hamburger} alt="Hamburger" width={20} height={20} />
+              <img src={icons.hamburger} alt="Hamburger" width={20} height={20} />
             </div>
           </div>
         </nav>

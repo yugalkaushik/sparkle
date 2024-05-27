@@ -8,7 +8,7 @@ const Discover = () => {
   useEffect(() => {
     const fetchDiscoverSlides = async () => {
       try {
-        const response = await axios.get('/api/discoverslides');
+        const response = await axios.get('http://localhost:5100/discover');
         setDiscoverSlides(response.data);
       } catch (error) {
         console.error('Error fetching discover slides:', error);

@@ -7,7 +7,7 @@ const Classic = () => {
   useEffect(() => {
     const fetchClassicSlides = async () => {
       try {
-        const response = await axios.get('/api/classicslides');
+        const response = await axios.get('http://localhost:5100/classic');
         setClassicSlides(response.data);
       } catch (error) {
         console.error('Error fetching classic slides:', error);

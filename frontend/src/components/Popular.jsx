@@ -7,7 +7,7 @@ const Popular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/popular'); // Replace URL with your backend endpoint
+        const response = await axios.get('http://localhost:5100/popular');
         setSlides(response.data);
       } catch (error) {
         console.error('Error fetching popular slides:', error);

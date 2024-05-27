@@ -8,7 +8,7 @@ const Trends = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/trends'); // Replace URL with your backend endpoint
+        const response = await axios.get('http://localhost:5100/api/trend');
         const { imageUrl, text } = response.data;
         setImageUrl(imageUrl);
         setText(text);
