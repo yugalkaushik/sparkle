@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Exclusive = require('../models/Exclusive');
 
-router.get('/', async (req, res) => {
+router.get('/exclusive', async (req, res) => {
   try {
     const exclusiveData = await Exclusive.findOne();
     res.json(exclusiveData);

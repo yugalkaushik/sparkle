@@ -1,0 +1,28 @@
+[
+    {
+      "imageUrl": "/images/dslide1.jpg",
+      "title": "Discover 1",
+      "caption": "Discover caption 1"
+    },
+    {
+      "imageUrl": "/images/dslide2.jpg",
+      "title": "Discover 2",
+      "caption": "Discover caption 2"
+    },
+    {
+      "imageUrl": "/images/dslide3.jpg",
+      "title": "Discover 3",
+      "caption": "Discover caption 3"
+    },
+    {
+      "imageUrl": "/images/dslide4.jpg",
+      "title": "Discover 4",
+      "caption": "Discover caption 4"
+    },
+    {
+      "imageUrl": "/images/dslide5.jpg",
+      "title": "Discover 5",
+      "caption": "Discover caption 5"
+    }
+  ]
+  

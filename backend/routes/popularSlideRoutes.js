@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const PopularSlide = require('../models/PopularSlide');
 
-router.get('/', async (req, res) => {
+router.get('/popular', async (req, res) => {
   try {
     const slides = await PopularSlide.find();
     res.json(slides);
