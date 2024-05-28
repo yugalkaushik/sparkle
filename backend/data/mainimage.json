@@ -1,20 +1,20 @@
 [
   {
-    "imageUrl": "/images/mainImage1.jpg",
+    "imageUrl": "../images/mainImage1.jpg",
     "heading": "Image 1 Heading",
     "description": "Description for image 1.",
-    "caption": ""
+    "caption": "hi"
   },
   {
-    "imageUrl": "/images/mainImage2.jpg",
+    "imageUrl": "../images/mainImage2.jpg",
     "heading": "Image 2 Heading",
     "description": "Description for image 2.",
-    "caption": ""
+    "caption": "hello"
   },
   {
-    "imageUrl": "/images/mainImage3.jpg",
+    "imageUrl": "../images/mainImage3.jpg",
     "heading": "Image 3 Heading",
     "description": "Description for image 3.",
-    "caption": ""
+    "caption": "heyyy"
   }
 ]

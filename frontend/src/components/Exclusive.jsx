@@ -7,7 +7,8 @@ const Exclusive = () => {
   useEffect(() => {
     const fetchExclusiveData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/exclusive');
+        const response = await axios.get('http://localhost:5100/api/exclusive');
+        console.log('Response data:', response.data);
         setExclusiveData(response.data);
       } catch (error) {
         console.error('Error fetching exclusive data:', error);

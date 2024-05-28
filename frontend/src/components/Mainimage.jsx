@@ -3,12 +3,13 @@ import axios from 'axios';
 
 const Mainimage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [mainImageData, setMainImageData] = useState(null);
+  const [mainImageData, setMainImageData] = useState({ images: [] });
 
   useEffect(() => {
     const fetchMainImageData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/mainimage');
+        const response = await axios.get('http://localhost:5100/api/mainimage');
+        console.log('Response data:', response.data);
         setMainImageData(response.data);
       } catch (error) {
         console.error('Error fetching main image data:', error);
@@ -19,7 +20,7 @@ const Mainimage = () => {
   }, []);
 
   useEffect(() => {
-    if (mainImageData && mainImageData.images && mainImageData.images.length > 0) {
+    if (mainImageData.images && mainImageData.images.length > 0) {
       const intervalId = setInterval(goToNextSlide, 4000);
       return () => clearInterval(intervalId);
     }
@@ -29,27 +30,27 @@ const Mainimage = () => {
     setCurrentIndex((prevIndex) => (prevIndex === mainImageData.images.length - 1 ? 0 : prevIndex + 1));
   };
 
-  if (!mainImageData || !mainImageData.images || mainImageData.images.length === 0) {
-    return <div>Loading...</div>;
-  }
-
   return (
-    <div className="ml-8 mr-8 carousel">
-      <div className="flex justify-center items-center flex-col">
-        <img
-          src={mainImage.images[currentIndex].url}
-          alt={mainImage.images[currentIndex].caption}
-          className="w-full h-full relative top-0 left-0"
-        />
-        <div className="mt-4 text-center flex flex-col sm:flex-row items-center justify-center">
-          <h2 className="text-6xl font-horizon font-extrabold">{mainImageData.heading}</h2>
-          <p className="mt-2 text-xl text-black-600">{mainImageData.description}</p>
-          <div className="mt-4 flex flex-row">
-            <button className="mr-2 bg-black hover:bg-gray-900 text-white font-bold py-2 px-8 rounded-full">Shop Men</button>
-            <button className="ml-2 bg-black hover:bg-gray-900 text-white font-bold py-2 px-6 rounded-full">Shop Women</button>
-          </div>
-        </div>
-      </div>
+    <div className="ml-8 mr-8 carousel h-full flex justify-center items-center">
+      <div className="w-full h-full relative">
+        {mainImageData.images && mainImageData.images.length > 0 && (
+          <>
+            <img
+              src={mainImageData.images[currentIndex].imageUrl}
+              alt={mainImageData.images[currentIndex].caption}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute bottom-0 left-0 w-full text-center bg-opacity-50 bg-black p-4">
+              <h2 className="text-6xl font-extrabold text-white">{mainImageData.heading}</h2>
+              <p className="mt-2 text-xl text-gray-300">{mainImageData.description}</p>
+              <div className="mt-4 flex justify-center space-x-4">
+                <button className="bg-black hover:bg-gray-900 text-white font-bold py-2 px-8 rounded-full">Shop Men</button>
+                <button className="bg-black hover:bg-gray-900 text-white font-bold py-2 px-8 rounded-full">Shop Women</button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>  
     </div>
   );
 };

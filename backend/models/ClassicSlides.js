@@ -6,6 +6,6 @@ const classicSlideSchema = new mongoose.Schema({
     caption:String
 });
 
-const ClassicSlide = mongoose.model('ClassicSlide', classicSlideSchema);
+const ClassicSlides = mongoose.model('ClassicSlide', classicSlideSchema);
 
-module.exports = ClassicSlide;
+module.exports = ClassicSlides;

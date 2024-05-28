@@ -10,6 +10,7 @@ const Trends = () => {
       try {
         const response = await axios.get('http://localhost:5100/api/trend');
         const { imageUrl, text } = response.data;
+        console.log('Response data:', response.data);
         setImageUrl(imageUrl);
         setText(text);
       } catch (error) {

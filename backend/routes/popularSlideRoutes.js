@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const PopularSlide = require('../models/PopularSlide');
+const PopularSlides = require('../models/PopularSlide');
 
-router.get('/popular', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const slides = await PopularSlide.find();
+    const slides = await PopularSlides.find();
     res.json(slides);
   } catch (err) {
     res.status(500).json({ message: err.message });

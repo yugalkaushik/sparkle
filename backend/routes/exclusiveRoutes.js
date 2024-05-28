@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Exclusive = require('../models/Exclusive');
+const Exclusives = require('../models/Exclusive');
 
-router.get('/exclusive', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const exclusiveData = await Exclusive.findOne();
+    const exclusiveData = await Exclusives.findOne();
     res.json(exclusiveData);
   } catch (err) {
     res.status(500).json({ message: err.message });

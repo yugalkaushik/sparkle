@@ -7,7 +7,8 @@ const Popular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/popular');
+        const response = await axios.get('http://localhost:5100/api/popular');
+        console.log('Response data:', response.data);
         setSlides(response.data);
       } catch (error) {
         console.error('Error fetching popular slides:', error);

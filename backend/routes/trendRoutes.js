@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const Trend = require('../models/Trend');
+const Trends = require('../models/Trend');
 
-router.get('/trend', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const trend = await Trend.findOne();
+    const trend = await Trends.findOne();
     res.json(trend);
   } catch (err) {
     res.status(500).json({ message: err.message });

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const TextSlide = require('../models/TextSlide');
+const TextSlides = require('../models/TextSlide');
 
-router.get('/api/textslide', async (req, res) => {
+router.get('', async (req, res) => {
   try {
-    const slides = await TextSlide.find();
+    const slides = await TextSlides.find();
     res.json(slides);
   } catch (err) {
     res.status(500).json({ message: err.message });
