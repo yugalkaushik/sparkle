@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 const Discover = () => {
   const [discoverslides, setDiscoverSlides] = useState([]);
 
@@ -19,7 +18,7 @@ const Discover = () => {
     fetchDiscoverSlides();
   }, []);
 
-  if (discoverslides.length === 0) {
+  if (discoverslides.length == 0) {
     return <p>Loading...</p>;
   }
 
@@ -32,7 +31,7 @@ const Discover = () => {
             <div key={index} className="flex-shrink-0 w-1/2 sm:w-1/2 lg:w-1/5">
               <div className="pr-2">
                 <img
-                  src={discoverslide.image}
+                  src={discoverslide.imageUrl}
                   alt={discoverslide.title}
                   className="w-full object-cover"
                   style={{ height: '500px' }}

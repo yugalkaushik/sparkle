@@ -21,15 +21,15 @@ const Nav = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
-      <div className="bg-gray-100 py-2 px-4 flex justify-end items-center text-sm">
+      <div className="bg-gray-100 py-2 px-10 flex justify-end items-center text-sm">
         <a href="/signin" className="text-black-400 font-semibold mr-6">Sign In</a>
         <a href="/join" className="text-black-400 font-semibold">Join Us</a>
       </div>
 
-      <div className="px-4 py">
+      <div className="py-1">
         <nav className="flex justify-between items-center max-w-screen-xl mx-auto">
-          <a href="/" className="px-0.1 ml-2">
-            <img src={icons.navLogo} alt="logo" className="w-10 sm:w-14"/>
+          <a href="/">
+            <img src={icons.navLogo} alt="logo"/>
           </a>
           <ul className="hidden lg:flex gap-10">
             {navLinks.map((item) => (

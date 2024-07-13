@@ -38,7 +38,7 @@ const TextSlideshow = () => {
   }, [slidesText.length, enteringSlide]);
 
   return (
-    <div className="relative w-full h-12 overflow-hidden bg-gray-100 flex items-center justify-center">
+    <div className="relative w-full h-14 overflow-hidden bg-gray-100 flex items-center justify-center">
       {slidesText.map((slide, index) => (
         <div
           key={index}
@@ -53,8 +53,8 @@ const TextSlideshow = () => {
           }`}
         >
           <div className="text-center">
-            <p className="text-lg font-semibold">{slide.Heading}</p>
-            <p className="text-lg font-semibold">{slide.description}</p>
+            <p className="text-lg font-semibold">{slide.heading}</p>
+            <p className="text-sm underline">{slide.description}</p>
           </div>
         </div>
       ))}
