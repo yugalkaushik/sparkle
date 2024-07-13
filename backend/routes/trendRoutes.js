@@ -4,8 +4,8 @@ const Trends = require('../models/Trend');
 
 router.get('/', async (req, res) => {
   try {
-    const trend = await Trends.findOne();
-    res.json(trend);
+    const trendData = await Trends.findOne();
+    res.json(trendData);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
