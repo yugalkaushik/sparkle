@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
 import icons from '../assets/icons';
+import { Link } from "react-router-dom";
 
 const HoverDialog = ({ sublinks }) => {
   return (
@@ -46,8 +47,8 @@ const Nav = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="bg-gray-100 py-2 px-10 flex justify-end items-center text-sm">
-        <a href="/signin" className="text-black-400 font-semibold mr-6">Sign In</a>
-        <a href="/join" className="text-black-400 font-semibold">Join Us</a>
+        <Link to="/login" className="text-black-400 font-semibold mr-6">Log In</Link>
+        <Link to="/joinus" className="text-black-400 font-semibold">Join Us</Link>
       </div>
 
       <div className="py-1">
@@ -61,12 +62,12 @@ const Nav = () => {
             onMouseEnter={() => handleHover(item)}
             onMouseLeave={handleMouseLeave}
               >
-                <a
-                  href={item.href}
-                  className=" font-montserrat leading-normal text-lg text-black-400 hover:text-cyan-500"
+                <Link
+                  to={item.href}
+                  className="font-montserrat leading-normal text-lg text-black-400 hover:text-cyan-500"
                 >
                   {item.label}
-                </a>
+                </Link>
                 {hoveredLink === item && (
               <HoverDialog sublinks={item.sublinks} />
             )}
