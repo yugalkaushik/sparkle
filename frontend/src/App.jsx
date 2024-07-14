@@ -1,55 +1,30 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Nav from "./components/Nav";
-import TextSlideshow from "./components/TextSlideshow";
-import Mainimage from "./components/Mainimage";
-import Discover from "./components/Discover";
-import Trends from "./components/Trends";
-import Popular from "./components/Popular";
-import Exclusive from "./components/Exclusive";
-import Classic from "./components/Classic";
-import FlipWords from "./components/Flipwords";
-import Footer from "./components/Footer";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Joinus from './pages/Joinus';
+import New from './pages/New';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Sale from './pages/Sale';
+import Sneakers from './pages/Sneakers';
 
 const App = () => {
-  
-  const words = ["Modern", "Ethnic", "Western", "Classic"];
-
   return (
-    <main className="relative pt-20">
-      <Nav />
-      <section className="mt-4">
-        <TextSlideshow />
-      </section>
-      <div className="flex justify-center items-center px-4 ml-4 mr-4 mt-6 mb-6">
-        <div className="mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-2xl lg:text-4xl">
-          Explore
-          <FlipWords words={words} />
-          Fashion Trends Now.
-        </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/joinus" element={<Joinus />} />
+          <Route path="/new" element={<New />} />
+          <Route path="/men" element={<Men />} />
+          <Route path="/women" element={<Women />} />
+          <Route path="/sale" element={<Sale />} />
+          <Route path="/sneakers" element={<Sneakers />} />
+        </Routes>
       </div>
-      <section>
-        <Mainimage />
-      </section>
-      <section>
-        <Trends  />
-      </section>
-      <section>
-        <Discover />
-      </section>
-      <section>
-        <Popular />
-      </section>
-      <section>
-        <Exclusive />
-      </section>
-      <section>
-        <Classic />
-      </section>
-      <section>
-        <Footer />
-      </section>
-    </main>
+    </Router>
   );
 };
 
