@@ -29,7 +29,7 @@ const Trends = () => {
     <h2 className="text-2xl font-horizon font-semibold text-left mb-6">Latest Trend</h2>
       <img src={imageUrl} alt="Full Screen" className="rounded-2xl" />
       <div className="mt-4 text-center">
-        <h2 className="text-6xl font-horizon font-extrabold text-black">{heading}</h2>
+        <h2 className="text-4xl lg:text-6xl font-horizon font-extrabold text-black">{heading}</h2>
         <p className="mt-2 text-xl text-gray-900">{description}</p>
         <button className="mt-4 mr-2 bg-black hover:bg-gray-900 text-white font-bold py-2 px-10 rounded-full">Buy It</button>
         <button className="ml-2 bg-black hover:bg-gray-900 text-white font-bold py-2 px-6 rounded-full">View More</button>

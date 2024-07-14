@@ -10,8 +10,8 @@ const Footer = () => {
           <div className="w-1/2 mb-4">
             <h2 className="text-sm text-black font-semibold mb-5">Social Links</h2> 
             <a href="#" className="text-gray-500 hover:text-blue-600 mr-4 block mb-2">Facebook</a>
-            <a href="#" className="text-gray-500 hover:text-black mr-4 block mb-2">Twitter</a>
             <a href="#" className="text-gray-500 hover:text-purple-600 mr-4 block mb-2">Instagram</a>
+            <a href="#" className="text-gray-500 hover:text-black mr-4 block mb-2">X</a>
           </div>
           
           <div className="pl-4 lg:w-1/2">

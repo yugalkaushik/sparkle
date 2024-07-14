@@ -28,12 +28,12 @@ const Discover = () => {
       <div className="overflow-x-auto w-full">
         <div className="flex gap-1 transition-transform duration-500 ease-in-out">
           {discoverslides.map((discoverslide, index) => (
-            <div key={index} className="flex-shrink-0 w-1/2 sm:w-1/2 lg:w-1/5">
+            <div key={index} className="flex-shrink-0 w-8/12 lg:w-1/5">
               <div className="pr-2">
                 <img
                   src={discoverslide.imageUrl}
                   alt={discoverslide.title}
-                  className="w-full object-cover"
+                  className="w-full object-cover rounded-xl"
                   style={{ height: '500px' }}
                 />
                 <p className="font-horizon text-center mt-2 mb-4 text-lg text-black ">{discoverslide.caption}</p>

@@ -38,7 +38,7 @@ const TextSlideshow = () => {
   }, [slidesText.length, enteringSlide]);
 
   return (
-    <div className="relative w-full h-14 overflow-hidden bg-gray-100 flex items-center justify-center">
+    <div className="relative w-full h-14 overflow-hidden bg-gray-100 flex items-center justify-center ">
       {slidesText.map((slide, index) => (
         <div
           key={index}

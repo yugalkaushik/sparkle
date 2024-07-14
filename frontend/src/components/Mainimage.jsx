@@ -26,12 +26,12 @@ const Mainimage = () => {
 
   return (
     <div className="relative ml-7 mr-7 mx-10">
-      <img src={imageUrl} alt="Full Screen" className="rounded-2xl" />
-      <div className="mt-4 text-center">
-        <h2 className="text-6xl font-horizon font-extrabold text-black">{heading}</h2>
-        <p className="mt-2 text-xl text-gray-900">{description}</p>
-      </div>
+    <img src={imageUrl} alt="Full Screen" className=" object-cover rounded-2xl" />
+    <div className="mt-4 text-center">
+      <h2 className="font-horizon font-extrabold text-black text-4xl lg:text-6xl ">{heading}</h2>
+      <p className="mt-2 text-xl text-gray-900">{description}</p>
     </div>
+  </div>  
   );
 };
 

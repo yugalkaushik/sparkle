@@ -1,9 +1,25 @@
 import React, { useState, useEffect} from "react";
 import axios from "axios";
-import icons from '../assets/icons'
+import icons from '../assets/icons';
+
+const HoverDialog = ({ sublinks }) => {
+  return (
+    <div className="hover-dialog absolute bg-white shadow-md rounded-md px-12 py-12 ">
+      <ul>
+        {sublinks.map((sublink) => (
+          <li key={sublink.id}>
+            <a href={sublink.href} className="font-montserrat leading-normal text-md text-gray-500 hover:text-blue-500">{sublink.label}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Nav = () => {
   const [navLinks, setNavLinks] = useState([]);
+  const [hoveredLink, setHoveredLink] = useState(null);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +35,14 @@ const Nav = () => {
     fetchData();
   }, []);
 
+  const handleHover = (link) => {
+    setHoveredLink(link);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredLink(null);
+  };
+
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="bg-gray-100 py-2 px-10 flex justify-end items-center text-sm">
@@ -29,17 +53,23 @@ const Nav = () => {
       <div className="py-1">
         <nav className="flex justify-between items-center max-w-screen-xl mx-auto">
           <a href="/">
-            <img src={icons.navLogo} alt="logo"/>
+            <img src={icons.navLogo} alt="logo" className="lg:ml-1 ml-4 w-10" />
           </a>
           <ul className="hidden lg:flex gap-10">
             {navLinks.map((item) => (
-              <li key={item.label}>
+              <li key={item.label}
+            onMouseEnter={() => handleHover(item)}
+            onMouseLeave={handleMouseLeave}
+              >
                 <a
                   href={item.href}
-                  className="font-montserrat leading-normal text-lg text-black-400 "
+                  className=" font-montserrat leading-normal text-lg text-black-400 hover:text-cyan-500"
                 >
                   {item.label}
                 </a>
+                {hoveredLink === item && (
+              <HoverDialog sublinks={item.sublinks} />
+            )}
               </li>
             ))}
           </ul>

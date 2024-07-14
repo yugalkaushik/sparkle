@@ -49,7 +49,7 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
           opacity: 0,
           y: -40,
           x: 40,
-          filter: "blur(8px)", // Ensure blur is a positive value
+          filter: "blur(8px)", 
           scale: 2,
           position: "absolute",
         }}
@@ -62,7 +62,7 @@ export const FlipWords = ({ words, duration = 3000, className }) => {
         {currentWord.split("").map((letter, index) => (
           <motion.span
             key={currentWord + index}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }} // Ensure blur is a positive value
+            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{
               delay: index * 0.08,
