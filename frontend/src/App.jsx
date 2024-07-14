@@ -22,7 +22,7 @@ const App = () => {
         <TextSlideshow />
       </section>
       <div className="flex justify-center items-center px-4 ml-4 mr-4 mt-6 mb-6">
-        <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+        <div className="mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-2xl lg:text-4xl">
           Explore
           <FlipWords words={words} />
           Fashion Trends Now.
