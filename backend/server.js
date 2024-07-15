@@ -2,7 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const path = require('path');
+
 
 dotenv.config();
 
@@ -23,5 +23,5 @@ app.use('/api/popular', require('./routes/popularSlideRoutes'));
 app.use('/api/exclusive', require('./routes/exclusiveRoutes'));
 app.use('/api/classic', require('./routes/classicSlidesRoutes'));
 
-const PORT =process.env.PORT || 5100;
+const PORT =process.env.PORT || 5000;
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));

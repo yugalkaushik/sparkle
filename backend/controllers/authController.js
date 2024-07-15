@@ -1,10 +1,13 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 //function for user registration
 exports.register = async(req,res) => {
-    const{name, email, password} = req.body;
+    const{name, email, password, age, gender} = req.body;
     try{
         let user = await User.findOne({email});
         if(user){
@@ -13,16 +16,20 @@ exports.register = async(req,res) => {
         user = new User({
             name,
             email,
-            password
+            password,
+            age,
+            gender
         });
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password,salt);
         await user.save();
+
         const payload = {
             user: {
                 id:user.id
             },
         };
+        
         jwt.sign(
             payload,
             process.env.JWT_SECRET,
@@ -46,13 +53,13 @@ exports.login = async(req,res) => {
         if(!user){
             return res.status(400).json({msg:"Invalid Credentials"});
         }
-        const isMatch = await bcrypt.compare(password,user.password);
+        const isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch){
             return res.status(400).json({msg:"Invalid Credentials"});
         }
-        const paylaod = {
-            user:{
-                id:user.id,
+        const payload = {
+            user: {
+                id:user.id
             },
         };
 
