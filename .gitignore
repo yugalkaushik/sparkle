@@ -1,9 +1,6 @@
 # Ignore node_modules directory
 node_modules/
 
-# Ignore log files
-*.log
-
 # Ignore compiled files
 *.class
 *.o
@@ -20,6 +17,10 @@ Thumbs.db
 /dist
 /build
 
-# Ignore IDE-specific files
-.vscode/
-.idea/
+# IDE and editor files
+.vscode
+.idea
+*.sublime-workspace
+
+# Log files
+*.log
