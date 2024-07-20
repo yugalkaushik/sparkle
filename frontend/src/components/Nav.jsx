@@ -1,11 +1,12 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import icons from '../assets/icons';
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const HoverDialog = ({ sublinks }) => {
   return (
-    <div className="hover-dialog absolute bg-white shadow-md rounded-md px-12 py-12 ">
+    <div className="hover-dialog absolute bg-white shadow-md rounded-md px-12 py-12">
       <ul>
         {sublinks.map((sublink) => (
           <li key={sublink.id}>
@@ -20,14 +21,13 @@ const HoverDialog = ({ sublinks }) => {
 const Nav = () => {
   const [navLinks, setNavLinks] = useState([]);
   const [hoveredLink, setHoveredLink] = useState(null);
-
+  const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:5100/api/navlinks');
-      console.log('Response data:', response.data);
-      setNavLinks(response.data);
+        setNavLinks(response.data);
       } catch (error) {
         console.error('Error fetching navigation links:', error);
       }
@@ -47,8 +47,16 @@ const Nav = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="bg-gray-100 py-2 px-10 flex justify-end items-center text-sm">
-        <Link to="/login" className="text-black-400 font-semibold mr-6">Log In</Link>
-        <Link to="/joinus" className="text-black-400 font-semibold">Join Us</Link>
+        {isAuthenticated ? (
+          <div className="flex items-center">
+            <Link to="/profile" className="text-black-400 font-semibold mr-6">Hello! View Profile</Link>
+          </div>
+        ) : (
+          <div className="flex items-center">
+            <Link to="/login" className="text-black-400 font-semibold mr-6">Login</Link>
+            <Link to="/signup" className="text-black-400 font-semibold">Signup</Link>
+          </div>
+        )}
       </div>
 
       <div className="py-1">
@@ -58,9 +66,10 @@ const Nav = () => {
           </a>
           <ul className="hidden lg:flex gap-10">
             {navLinks.map((item) => (
-              <li key={item.label}
-            onMouseEnter={() => handleHover(item)}
-            onMouseLeave={handleMouseLeave}
+              <li
+                key={item.label}
+                onMouseEnter={() => handleHover(item)}
+                onMouseLeave={handleMouseLeave}
               >
                 <Link
                   to={item.href}
@@ -69,15 +78,29 @@ const Nav = () => {
                   {item.label}
                 </Link>
                 {hoveredLink === item && (
-              <HoverDialog sublinks={item.sublinks} />
-            )}
+                  <HoverDialog sublinks={item.sublinks} />
+                )}
               </li>
             ))}
           </ul>
           <div className="flex gap-7 items-center cursor-pointer">
             <img src={icons.search} alt="search" width={20} height={20} />
-            <img src={icons.wishlist} alt="wishlist" width={20} height={20} />
-            <img src={icons.cart} alt="cart" width={20} height={20} />
+            <Link to="/wishlist">
+               <img 
+                 src={icons.wishlist} 
+                 alt="wishlist" 
+                 width={20} 
+                 height={20} 
+                 className="cursor-pointer"
+                />
+              </Link>
+             <Link to="/cart">
+             <img src={icons.cart}
+              alt="cart"
+               width={20} 
+               height={20} 
+               />
+              </Link>
             <div className="block md:hidden">
               <img src={icons.hamburger} alt="Hamburger" width={20} height={20} />
             </div>
