@@ -1,30 +1,46 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Joinus from './pages/Joinus';
 import New from './pages/New';
 import Men from './pages/Men';
 import Women from './pages/Women';
 import Sale from './pages/Sale';
 import Sneakers from './pages/Sneakers';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import Nav from './components/Nav';
+import { AuthProvider } from './context/AuthContext';
+
+const AppContent = () => {
+  const location = useLocation();
+  const hideNavPaths = ['/login', '/signup' , '/profile', '/wishlist', '/cart'];
+
+  return (
+    <>
+      {!hideNavPaths.includes(location.pathname) && <Nav />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/new" element={<New />} />
+        <Route path="/men" element={<Men />} />
+        <Route path="/women" element={<Women />} />
+        <Route path="/sale" element={<Sale />} />
+        <Route path="/sneakers" element={<Sneakers />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+    </>
+  );
+};
 
 const App = () => {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/joinus" element={<Joinus />} />
-          <Route path="/new" element={<New />} />
-          <Route path="/men" element={<Men />} />
-          <Route path="/women" element={<Women />} />
-          <Route path="/sale" element={<Sale />} />
-          <Route path="/sneakers" element={<Sneakers />} />
-        </Routes>
-      </div>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 };
 
