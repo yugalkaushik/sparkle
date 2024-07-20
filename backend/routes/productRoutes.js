@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const auth = require('../middlewares/authMiddleware');
 const Product = require('../models/Product');
 
 router.get('/', async(req,res)=> {
@@ -13,5 +12,4 @@ router.get('/', async(req,res)=> {
     }
 });
 
-//routes for creating, updating and deleting products will be added here
 module.exports = router;
