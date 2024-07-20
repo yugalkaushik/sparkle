@@ -1,6 +1,4 @@
 import React from "react";
-import Nav from "../components/Nav"
-import TextSlideshow from "../components/TextSlideshow";
 import Mainimage from "../components/Mainimage";
 import Discover from "../components/Discover";
 import Trends from "../components/Trends";
@@ -16,10 +14,6 @@ const Home = () => {
 
   return (
       <main className="relative pt-20">
-        <Nav />
-            <section className="mt-2">
-              <TextSlideshow />
-            </section>
             <div className="flex justify-center items-center px-4 ml-4 mr-4 mt-6 mb-6">
               <div className="mx-auto font-normal text-neutral-600 dark:text-neutral-400 text-2xl lg:text-4xl">
                 Explore
