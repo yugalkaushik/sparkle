@@ -59,6 +59,7 @@ const Nav = () => {
         )}
       </div>
 
+
       <div className="py-1">
         <nav className="flex justify-between items-center max-w-screen-xl mx-auto">
           <a href="/">

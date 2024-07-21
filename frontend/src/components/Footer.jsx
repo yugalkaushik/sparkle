@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="flex flex-row justify-center sm:w-2/3 lg:w-1/3 mt-4 mx-6 ">
           <div className="w-1/2 mb-4">
             <h2 className="text-sm text-black font-semibold mb-5">Social Links</h2> 
-            <a href="#" className="text-gray-500 hover:text-blue-600 mr-4 block mb-2">Facebook</a>
-            <a href="#" className="text-gray-500 hover:text-purple-600 mr-4 block mb-2">Instagram</a>
-            <a href="#" className="text-gray-500 hover:text-black mr-4 block mb-2">X</a>
+            <a href="https://www.facebook.com" className="text-gray-500 hover:text-blue-600 mr-4 block mb-2">Facebook</a>
+            <a href="https://www.instagram.com" className="text-gray-500 hover:text-purple-600 mr-4 block mb-2">Instagram</a>
+            <a href="https://x.com/home" className="text-gray-500 hover:text-black mr-4 block mb-2">X</a>
           </div>
           
           <div className="pl-4 lg:w-1/2">
