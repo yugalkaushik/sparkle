@@ -4,8 +4,9 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const User = require('./models/User');
+const productRoutes = require('./routes/productRoutes');
 
-dotenv.config({ path: '../.env' });
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5100;
@@ -18,6 +19,8 @@ const corsOptions = {
 // Middleware
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); 
+app.use('/api/products', productRoutes); 
 
 // Login endpoint
 app.post('/login', async (req, res, next) => {

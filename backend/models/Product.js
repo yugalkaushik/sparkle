@@ -1,5 +1,4 @@
 const mongoose = require ('mongoose');
-const { type } = require('os');
 
 const ProductSchema = new mongoose.Schema({
     name:{
@@ -14,10 +13,15 @@ const ProductSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    Image:{
+    gender:{
         type:String,
         required:true
-    }
+    },
+    category:{
+         type: String,
+          required: true
+    },
+    images:[{type: String}]
 });
 
 module.exports = mongoose.model('Product', ProductSchema);
