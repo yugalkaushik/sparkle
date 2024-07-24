@@ -23,8 +23,8 @@ const Classic = () => {
   }
 
   return (
-    <div className="relative ml-8 mr-8 mt-20 ">
-      <h2 className="text-2xl font-horizon font-semibold text-left mb-6">Classic Spotlight</h2>
+    <div className="relative ml-8 mr-8 mt-8 lg:mt-20 ">
+      <h2 className="text-lg lg:text-2xl font-horizon font-semibold text-left mb-4">Classic Spotlight</h2>
       <div className="overflow-x-auto w-full">
         <div className="flex gap-1 transition-transform duration-500 ease-in-out"> 
           {classicslides.map((classicslide, index) => (
@@ -32,8 +32,7 @@ const Classic = () => {
               <div className="pr-2">
                 <img src={classicslide.imageUrl}
                  alt={classicslide.title}
-                  className="w-full h-full object-cover rounded-xl" 
-                  style={{width:'350px', height:'300px'}}/>
+                  className=" object-cover rounded-xl lg:w-[350px] lg:h-[300px] w-[280px] h-[290px]" />
                 <p className="font-gliker text-center text-lg mb-4 mt-2 text-black">{classicslide.caption}</p>
               </div>
             </div>

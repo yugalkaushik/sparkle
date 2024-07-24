@@ -4,23 +4,10 @@ import icons from '../assets/icons';
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const HoverDialog = ({ sublinks }) => {
-  return (
-    <div className="hover-dialog absolute bg-white shadow-md rounded-md px-12 py-12">
-      <ul>
-        {sublinks.map((sublink) => (
-          <li key={sublink.id}>
-            <a href={sublink.href} className="font-montserrat leading-normal text-md text-gray-500 hover:text-blue-500">{sublink.label}</a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const Nav = () => {
   const [navLinks, setNavLinks] = useState([]);
   const [hoveredLink, setHoveredLink] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false); 
   const { isAuthenticated, user, logout } = useAuth();
 
   useEffect(() => {
@@ -44,12 +31,17 @@ const Nav = () => {
     setHoveredLink(null);
   };
 
+  // Toggle menu visibility
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
-      <div className="bg-gray-100 py-2 px-10 flex justify-end items-center text-sm">
+    <header className="fixed top-0 left-0 w-full bg-white z-50">
+      <div className="bg-white py-2 px-10 flex justify-end items-center text-sm mx-0 lg:mx-0">
         {isAuthenticated ? (
           <div className="flex items-center">
-            <Link to="/profile" className="text-black-400 font-semibold mr-6">Hello! View Profile</Link>
+            <Link to="/profile" className="text-black-400 font-semibold lg:mr-6">Hello! View Profile</Link>
           </div>
         ) : (
           <div className="flex items-center">
@@ -59,8 +51,7 @@ const Nav = () => {
         )}
       </div>
 
-
-      <div className="py-1">
+      <div className="py-1 mx-4 lg:mx-0">
         <nav className="flex justify-between items-center max-w-screen-xl mx-auto">
           <a href="/">
             <img src={icons.navLogo} alt="logo" className="lg:ml-1 ml-4 w-10" />
@@ -78,35 +69,60 @@ const Nav = () => {
                 >
                   {item.label}
                 </Link>
-                {hoveredLink === item && (
+                {/* {hoveredLink === item && (
                   <HoverDialog sublinks={item.sublinks} />
-                )}
+                )} */}
               </li>
             ))}
           </ul>
-          <div className="flex gap-7 items-center cursor-pointer">
-            <img src={icons.search} alt="search" width={20} height={20} />
+          <div className="flex gap-7 items-center cursor-pointer space-x-0.1 lg:space-x-6">
+            {/* <img src={icons.search} alt="search" width={20} height={20} />
             <Link to="/wishlist">
-               <img 
-                 src={icons.wishlist} 
-                 alt="wishlist" 
-                 width={20} 
-                 height={20} 
-                 className="cursor-pointer"
-                />
-              </Link>
-             <Link to="/cart">
-             <img src={icons.cart}
-              alt="cart"
-               width={20} 
-               height={20} 
-               />
-              </Link>
+              <img 
+                src={icons.wishlist} 
+                alt="wishlist" 
+                width={20} 
+                height={20} 
+                className="cursor-pointer"
+              />
+            </Link>
+            <Link to="/cart">
+              <img 
+                src={icons.cart}
+                alt="cart"
+                width={20} 
+                height={20} 
+              />
+            </Link> */}
             <div className="block md:hidden">
-              <img src={icons.hamburger} alt="Hamburger" width={20} height={20} />
+              <img 
+                src={icons.hamburger} 
+                alt="Hamburger" 
+                width={20} 
+                height={20} 
+                onClick={toggleMenu}
+              />
             </div>
           </div>
         </nav>
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="lg:hidden absolute top-14 left-0 w-full bg-white">
+            <ul className="flex flex-col items-center py-2">
+              {navLinks.map((item) => (
+                <li key={item.label} className="w-full text-center">
+                  <Link 
+                    to={item.href} 
+                    className="block py-2 px-4 text-black-400"
+                    onClick={toggleMenu} 
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </header>
   );
