@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
@@ -18,6 +19,8 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5100;
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const corsOptions = {
     origin: 'http://localhost:5173',
     methods: 'GET,POST,PUT,DELETE',
@@ -29,6 +32,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the backend server!');
+}); 
 
 // Routes
 app.use('/api/products', productRoutes);
