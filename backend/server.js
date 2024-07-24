@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5100;
 app.use(express.static(path.join(__dirname, 'public')));
 
 const corsOptions = {
-    origin: '*',
+    origin: ['https://sparkle-two.vercel.app', 'http://localhost:5173'],
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     optionsSuccessStatus: 200
