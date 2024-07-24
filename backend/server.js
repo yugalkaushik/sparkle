@@ -21,8 +21,20 @@ const PORT = process.env.PORT || 5100;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const allowedOrigins = [
+    'https://sparkle-two.vercel.app',
+    'https://sparkle-backend-gold.vercel.app',
+    'http://localhost:5173'
+];
+
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
     optionsSuccessStatus: 200
