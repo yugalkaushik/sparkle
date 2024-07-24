@@ -1,13 +1,13 @@
 {
     "version": 2,
-    "routes": [
+    "rewrites": [
       {
-        "src": "/product/(?<id>[^/]+)",
-        "dest": "/api/product?id=$id"
+        "source": "/product/(?<id>[^/]+)",
+        "destination": "/api/product?id=$id"
       },
       {
-        "src": "/(.*)",
-        "dest": "/$1"
+        "source": "/(.*)",
+        "destination": "/$1"
       }
     ],
     "headers": [
