@@ -2,8 +2,8 @@
     "version": 2,
     "rewrites": [
       {
-        "source": "/product/(?<id>[^/]+)",
-        "destination": "/api/product?id=$id"
+        "source": "/product/:id",
+        "destination": "/api/product?id=:id"
       },
       {
         "source": "/(.*)",
