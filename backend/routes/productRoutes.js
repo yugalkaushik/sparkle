@@ -6,14 +6,13 @@ const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
 
+// Add a new product with images
 router.post('/add', upload.array('images', 10), async (req, res) => {
     const { name, price, description, gender, category } = req.body;
     const files = req.files; 
-    // console.log('Received files:', files);
+    const imageUrls = [];
 
     try {
-        const imageUrls = [];
-
         if (files && files.length > 0) {
             for (const file of files) {
                 const blob = bucket.file(`${uuidv4()}-${file.originalname}`);
@@ -51,6 +50,17 @@ router.post('/add', upload.array('images', 10), async (req, res) => {
     } catch (error) {
         console.error('Error saving product:', error);
         res.status(400).json({ message: error.message });
+    }
+});
+
+// Get all products
+router.get('/', async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).json({ message: 'Server Error' });
     }
 });
 
