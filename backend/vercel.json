@@ -1,14 +1,10 @@
 {
     "version": 2,
     "routes": [
-        {
-            "routes": [
-                {
-                    "src": "/product/(?<id>[^/]+)",
-                    "dest": "/api/product?id=$id"
-                }
-            ]
-        },
+      {
+        "src": "/product/(?<id>[^/]+)",
+        "dest": "/api/product?id=$id"
+      },
       {
         "src": "/(.*)",
         "dest": "/$1"
