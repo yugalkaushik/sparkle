@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import api from '../api';
 import icons from '../assets/icons';
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -13,7 +13,7 @@ const Nav = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/navlinks');
+        const response = await api.get('/navlinks');
         setNavLinks(response.data);
       } catch (error) {
         console.error('Error fetching navigation links:', error);

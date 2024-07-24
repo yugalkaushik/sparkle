@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const Popular = () => {
   const [slides, setSlides] = useState([]);
@@ -7,7 +7,7 @@ const Popular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/popular');
+        const response = await api.get('/popular');
         console.log('Response data:', response.data);
         setSlides(response.data);
       } catch (error) {

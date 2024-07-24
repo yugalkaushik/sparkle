@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from '../api';
 import { Link } from "react-router-dom";
 
 const Admin = () => {
@@ -9,10 +9,6 @@ const Admin = () => {
     const [gender, setGender] = useState('');
     const [category, setCategory] = useState('');
     const [images, setImages] = useState([]);
-
-    const handleFileChange = (e) => {
-        setImages(e.target.files);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -29,7 +25,7 @@ const Admin = () => {
         }
 
         try {
-            const res = await axios.post('http://localhost:5100/api/products/add', formData,{
+            const res = await api.post('/products/add', formData,{
                 headers: {
                     'Content-type': 'multipart/form-data'
                 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useNavigate } from 'react-router-dom';
 
 const Exclusive = () => {
@@ -8,7 +8,7 @@ const Exclusive = () => {
   useEffect(() => {
     const fetchExclusiveData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/exclusive');
+        const response = await api.get('/exclusive');
         console.log('Response data:', response.data);
         setExclusiveData(response.data);
       } catch (error) {

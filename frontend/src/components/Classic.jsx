@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const Classic = () => {
   const [classicslides, setClassicSlides] = useState(null);
@@ -7,7 +7,7 @@ const Classic = () => {
   useEffect(() => {
     const fetchClassicSlides = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/classic');
+        const response = await api.get('/classic');
         console.log('Response data:', response.data);
         setClassicSlides(response.data);
       } catch (error) {

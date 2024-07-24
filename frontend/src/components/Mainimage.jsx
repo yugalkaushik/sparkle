@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const Mainimage = () => {
   const [mainImageData, setmainImageData] = useState(null);
@@ -7,7 +7,7 @@ const Mainimage = () => {
   useEffect(() => {
     const fetchmainImageData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/mainimage');
+        const response = await api.get('/mainimage');
         console.log('Response data:', response.data);
         setmainImageData(response.data);
       } catch (error) {

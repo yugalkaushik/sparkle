@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 const Discover = () => {
   const [discoverslides, setDiscoverSlides] = useState([]);
@@ -7,7 +7,7 @@ const Discover = () => {
   useEffect(() => {
     const fetchDiscoverSlides = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/discover');
+        const response = await api.get('/discover');
         console.log('Response data:', response.data);
         setDiscoverSlides(response.data);
       } catch (error) {

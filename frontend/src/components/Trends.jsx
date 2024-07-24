@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -9,7 +9,7 @@ const Trends = () => {
   useEffect(() => {
     const fetchtrendData = async () => {
       try {
-        const response = await axios.get('http://localhost:5100/api/trend');
+        const response = await api.get('/trend');
         console.log('Response data:', response.data);
         setTrendData(response.data);
       } catch (error) {
