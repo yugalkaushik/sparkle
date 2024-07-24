@@ -1,27 +1,70 @@
-import React from 'react';
-import SearchBox from '../components/SearchBox';
-import icons from '../assets/icons';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Sale = () => {
-  const handleSearchChange = (e) => {
-    // Add logic to handle search input change
-    console.log('Search query:', e.target.value);
-  };
+  const [products, setProducts] = useState([]);
+  const [menProducts, setMenProducts] = useState([]);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://localhost:5100/api/products');
+        setProducts(response.data);
+        setMenProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setError('Failed to fetch products. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
 
   return (
-    <div>
-      <header className="fixed top-0 left-0 h-16 w-full bg-white shadow-md shadow-slate-300 ">
-      <div className="flex justify-between items-center py-1 cursor-pointer">
-      <Link to="/" className="font-orbitron mt-2 ml-8 text-4xl mb-6">SPARKLE</Link>
-      <div className="flex mb-2 justify-center items-center space-x-4 mr-10 gap-2 cursor-pointer">
-      <SearchBox placeholder="Search..." handleChange={handleSearchChange} />
-      <img src={icons.wishlist} alt="wishlist" width={20} height={20} />
-      <img src={icons.cart} alt="cart" width={20} height={20} />
-      </div>
-      </div>
-      </header>
-      <div className='bg-gray-400 shadow-sm z-50'>
+    <div className='bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10 mt-20 md:mt-6 lg:mt-[3.5rem]'>
+      <h1 className="font-orbitron text-2xl sm:text-3xl md:text-4xl lg:text-3xl mb-4">SALE</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {menProducts.length > 0 ? (
+          menProducts.map((product) => (
+            <div key={product._id} className="product-card p-2 sm:p-4 md:p-6 lg:p-4 border rounded shadow-lg bg-white h-auto md:h-64 lg:h-[34rem]">
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-xl font-semibold mb-2">{product.name}</h2>
+              <p className="text-sm sm:text-base md:text-lg font-medium text-gray-600 mb-2">${product.price}</p>
+              <p className="text-xs sm:text-sm md:text-base text-gray-500 mb-2">{product.description}</p>
+              <div className="images">
+                <img
+                  src="/images/product.jpg"
+                  alt="Product"
+                  className="w-full h-40 sm:h-60 md:h-72 lg:h-80 object-cover mb-2"
+                />
+              </div>
+              <div className='flex flex-col sm:flex-row justify-center sm:justify-around mt-4'>
+                <button 
+                  className="bg-white text-black px-4 py-2 rounded border-2 border-gray-500 border-solid mb-2 sm:mb-0"
+                >
+                  Add to Wishlist
+                </button>
+                <button className='bg-black text-white py-2 px-4 rounded'>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>No products found</p>
+        )}
       </div>
     </div>
   );

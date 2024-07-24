@@ -22,12 +22,12 @@ const Login = () => {
     return (
         <div>
         <div className="flex justify-between ">
-        <p className="font-orbitron ml-8 mt-8 text-4xl mb-6 text-left">SPARKLE</p>
+        <p className="font-orbitron ml-8 mt-8 text-2xl lg:text-4xl mb-1 lg:mb-6 text-left">SPARKLE</p>
         <div className='bg-black text-white h-10 w-28 mt-8 mr-8 flex justify-center items-center'>
           <Link to="/" className="font-orbitron text-xl bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Explore</Link>
         </div>
       </div>
-      <div className="max-w-md mx-auto mt-20 p-6">
+      <div className="max-w-md mx-auto mt-6 lg:mt-20 p-6">
         <h2 className="font-orbitron text-4xl mb-6 text-center">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -55,7 +55,7 @@ const Login = () => {
             Login
           </button>
         </form>
-        <div className='flex mt-4 pl-16'>
+        <div className='flex mt-4 lg:pl-16'>
           <p>Don't have an account?</p>
           <Link to="/signup" className="ml-2 text-decoration: underline text-black-400 font-semibold">Join Us</Link>
         </div>
