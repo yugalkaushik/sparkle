@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     const exclusiveData = await Exclusives.findOne();
     res.json(exclusiveData);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.log(`Error retrieving exclusive: ${err.message}`);
+    res.status(500).json({  message: 'An error occurred while retrieving exclusive.' });
   }
 });
 

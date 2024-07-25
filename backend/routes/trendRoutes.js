@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     const trendData = await Trends.findOne();
     res.json(trendData);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.log(`Error retrieving trends ${err.message}`);
+    res.status(500).json({  message: 'An error occurred while retrieving trends.' });
   }
 });
 

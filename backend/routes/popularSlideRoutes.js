@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     const slides = await PopularSlides.find();
     res.json(slides);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.log(`Error retrieving popular slides: ${err.message}`);
+    res.status(500).json({  message: 'An error occurred while retrieving popular slides.' });
   }
 });
 

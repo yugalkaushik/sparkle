@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     const mainImageData = await MainImages.findOne();
     res.json(mainImageData);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    console.log(`Error retrieving mainimage ${err.message}`);
+    res.status(500).json({  message: 'An error occurred while retrieving mainimage.' });
   }
 });
 

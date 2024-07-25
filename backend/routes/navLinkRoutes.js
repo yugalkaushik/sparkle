@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
     const navLinks = await NavLink.find();
     res.json(navLinks);
   } catch (err) { 
-    res.status(500).json({ message: err.message });
+    console.log(`Error retrieving navlinks ${err.message}`);
+    res.status(500).json({  message: 'An error occurred while retrieving navlinks.' });
   }
 });
 module.exports = router;
