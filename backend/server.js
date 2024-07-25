@@ -19,7 +19,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5100;
 
-app.use('/images', express.static(path.join(__dirname, '../frontend/public/images')))
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
