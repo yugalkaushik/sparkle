@@ -12,8 +12,9 @@ const Signup = () => {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const apiUrl = 'https://sparkle-fxjd.onrender.com/api/signup';
     try{
-        await axios.post('https://sparkle-fxjd.onrender.com/api/signup',
+        await axios.post(apiUrl,
         {name, email, password, gender});
         navigate('/login');
     } catch (error) {
