@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5100;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors({
-    origin: ['https://sparkle-buy.vercel.app', 'http://localhost:5173'],
+    origin: ['https://sparkleyk.vercel.app/', 'http://localhost:5173'],
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
     optionsSuccessStatus: 200
