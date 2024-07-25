@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
-const cors = require('cors');
+const cors = require("cors");
 const User = require('./models/User');
 const productRoutes = require('./routes/productRoutes');
 const navLinkRoutes = require('./routes/navLinkRoutes');
@@ -21,12 +21,11 @@ const PORT = process.env.PORT || 5100;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors({
-    origin: ['https://sparkleyk.vercel.app/', 'http://localhost:5173'],
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
-    optionsSuccessStatus: 200
-}));
+app.use(
+    cors({
+    origin: "*",
+    })
+);
 
 // Middleware
 app.use(express.json());
