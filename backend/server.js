@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const corsOptions = {
     origin: ['https://sparkle-two.vercel.app', 'http://localhost:5173'],
     methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
+    allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
     optionsSuccessStatus: 200
 };
 
