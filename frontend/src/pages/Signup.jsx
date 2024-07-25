@@ -13,7 +13,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-        await axios.post('http://localhost:5100/signup', {name, email, password, gender});
+        await axios.post('https://sparkle-fxjd.onrender.com/signup',
+        {name, email, password, gender});
         navigate('/login');
     } catch (error) {
         console.error('Failed to sign up:', error);
