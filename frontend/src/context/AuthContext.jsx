@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(true);
                 setUser(userData);
             } else {
-                // Optionally handle expired or invalid token
                 localStorage.removeItem('token');
                 localStorage.removeItem('user');
                 setIsAuthenticated(false);
@@ -28,8 +27,8 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('https://sparkle-fxjd.onrender.com/api/login', { email, password });
-            const { token, userId, email: userEmail } = response.data.data;
+            const response = await axios.post('https://sparkle-backend-v1.vercel.app/api/login', { email, password });
+            const { token, userId, email: userEmail } = response.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify({ userId, email: userEmail }));
             setIsAuthenticated(true);
