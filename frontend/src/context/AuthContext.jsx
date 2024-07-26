@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
             setIsAuthenticated(true);
             setUser({ userId, email: userEmail });
             console.log('Login successful:', response.data);
-            navigate('/profile');
         } catch (error) {
             console.error('Login failed:', error);
         }
