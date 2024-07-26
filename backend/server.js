@@ -47,7 +47,7 @@ app.use('/api/exclusive', exclusiveRoutes);
 app.use('/api/classic', classicSlidesRoutes);
 
 // Login endpoint
-app.post('/login', async (req, res, next) => {
+app.post('/api/login', async (req, res, next) => {
     const { email, password } = req.body;
 
     try {
@@ -82,7 +82,7 @@ app.post('/login', async (req, res, next) => {
 });
 
 // Signup endpoint
-app.post('/signup', async (req, res, next) => {
+app.post('/api/signup', async (req, res, next) => {
     const { name, email, password, gender } = req.body;
 
     const newUser = new User({
