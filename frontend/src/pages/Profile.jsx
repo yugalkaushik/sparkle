@@ -16,7 +16,7 @@ const Profile = () => {
                     return;
                 }
 
-                const response = await axios.get('https://sparkle-backend-v1.vercel.app/api/profile', {
+                const response = await axios.get('https://sparkle-fxjd.onrender.com//api/profile', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
