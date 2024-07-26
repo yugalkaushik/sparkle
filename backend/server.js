@@ -47,7 +47,7 @@ app.use('/api/exclusive', exclusiveRoutes);
 app.use('/api/classic', classicSlidesRoutes);
 
 // Login endpoint
-app.post('/api/login', async (req, res, next) => {
+app.post('/login', async (req, res, next) => {
     const { email, password } = req.body;
 
     try {
