@@ -1,6 +1,6 @@
 # Sparkle : E-commerce Application
 
-Welcome to Sparkle, an ecommerce website developed with MERN stack.
+Welcome to Sparkle, an ecommerce website developed with MERN stack. https://sparkleyk.vercel.app/
 
 ## Overview
 
