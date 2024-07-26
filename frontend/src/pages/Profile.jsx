@@ -16,15 +16,13 @@ const Profile = () => {
                     return;
                 }
 
-                const response = await axios.get('https://sparkle-fxjd.onrender.com//api/profile', {
+                const response = await axios.get('https://sparkle-fxjd.onrender.com/api/profile', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
 
-                // Assuming your user data structure might be different
                 setUser(response.data);
             } catch (error) {
                 console.error('Failed to fetch profile:', error);
-                // Optionally handle token expiration
                 if (error.response.status === 401) {
                     logout();
                     navigate('/login');
