@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('http://localhost:5100/login', { email, password });
+            const response = await axios.post('https://sparkle-fxjd.onrender.com/login', { email, password });
             const { token, userId, email: userEmail } = response.data.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify({ userId, email: userEmail }));
