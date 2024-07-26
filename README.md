@@ -1,6 +1,6 @@
-# Sparkle Ecommerce Project
+# Sparkle : E-commerce Application
 
-Welcome to Sparkle, an ecommerce project developed with React and Tailwind CSS for the frontend, and MongoDB, JWT, dotenv, Express, and Node.js for the backend.
+Welcome to Sparkle, an ecommerce website developed with MERN stack.
 
 ## Overview
 
@@ -29,12 +29,12 @@ git clone https://github.com/yugalkaushik/sparkle.git
 
 4. Create a `.env` file in the `backend` directory and set your environment variables.
 
-5. Start the backend server.
+5. Also change the backend and frontend host accordingly.
 
-6. Start the frontend development server.
+6. Start the backend server.
 
+7. Start the frontend development server.
 
-7. Open your browser and navigate to `http://localhost:5000` to view Sparkle.
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to Sparkle, please follow these guidelines:
