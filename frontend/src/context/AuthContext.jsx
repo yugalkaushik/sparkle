@@ -28,12 +28,14 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await axios.post('https://sparkle-fxjd.onrender.com/login', { email, password });
+            const response = await axios.post('https://sparkle-fxjd.onrender.com/api/login', { email, password });
             const { token, userId, email: userEmail } = response.data.data;
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify({ userId, email: userEmail }));
             setIsAuthenticated(true);
             setUser({ userId, email: userEmail });
+            console.log('Login successful:', response.data);
+            navigate('/profile');
         } catch (error) {
             console.error('Login failed:', error);
         }
