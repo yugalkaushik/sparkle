@@ -4,7 +4,7 @@ Welcome to Sparkle, an ecommerce website developed with MERN stack. https://spar
 
 ## Overview
 
-Sparkle is a full-stack ecommerce platform designed to provide users with a seamless shopping experience. It features a modern and responsive user interface built with React and Tailwind CSS. The backend is powered by Express and Node.js, using MongoDB as the database and JWT for authentication. dotenv is used for environment configuration, ensuring secure handling of sensitive information.
+Sparkle is a MERN-stack ecommerce platform designed to provide users with a seamless shopping experience. It features a modern and responsive user interface built with React and Tailwind CSS. The backend is powered by Express and Node.js, using MongoDB as the database and JWT for authentication. dotenv is used for environment configuration, ensuring secure handling of sensitive information.
 
 ## Features
 
