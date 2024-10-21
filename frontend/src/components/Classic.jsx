@@ -3,6 +3,7 @@ import api from '../api';
 
 const Classic = () => {
   const [classicslides, setClassicSlides] = useState(null);
+  const [backendAlive, setBackendAlive] = useState(true);
 
   useEffect(() => {
     const fetchClassicSlides = async () => {
@@ -17,6 +18,29 @@ const Classic = () => {
     
     fetchClassicSlides();
   }, []);
+
+
+  const checkBackend = async () => {
+    try {
+      const response = await api.get('/classic/heartbeat'); // Adjust the path if necessary
+      if (response.status === 200) {
+        setBackendAlive(true);
+        console.log('Backend is alive!');
+      }
+    } catch (error) {
+      setBackendAlive(false);
+      console.error('Backend is not responding:', error);
+    }
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      checkBackend();
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   if (!classicslides) {
     return <div>Loading...</div>;
