@@ -20,7 +20,7 @@ const AppContent = () => {
   useEffect(() => {
     const pingServer = async () => {
       try {
-        await fetch('YOUR_BACKEND_URL/ping', {
+        await fetch('https://sparkle-fxjd.onrender.com/ping', {
           method: 'GET',
         });
       } catch (error) {
