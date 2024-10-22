@@ -22,7 +22,7 @@ const Classic = () => {
 
   const checkBackend = async () => {
     try {
-      const response = await api.get('/classic/heartbeat'); // Adjust the path if necessary
+      const response = await api.get('/classic/heartbeat');
       if (response.status === 200) {
         setBackendAlive(true);
         console.log('Backend is alive!');
