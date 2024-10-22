@@ -12,8 +12,5 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/heartbeat', (req, res) => {
-  res.status(200).send('Alive');
-});
 
 module.exports = router;

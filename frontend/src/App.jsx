@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import New from './pages/New';
@@ -16,6 +16,24 @@ import { AuthProvider } from './context/AuthContext';
 const AppContent = () => {
   const location = useLocation();
   const hideNavPaths = ['/login', '/signup' , '/profile', '/wishlist', '/cart', '/admin'];
+
+  useEffect(() => {
+    const pingServer = async () => {
+      try {
+        await fetch('YOUR_BACKEND_URL/ping', {
+          method: 'GET',
+        });
+      } catch (error) {
+        console.error('Ping failed:', error);
+      }
+    };
+
+    const interval = setInterval(pingServer, 10 * 60 * 1000);
+    
+    pingServer();
+    
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
