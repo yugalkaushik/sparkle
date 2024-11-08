@@ -1,50 +1,69 @@
-# Sparkle : E-commerce Application
+# *Sparkle*
 
-Welcome to Sparkle, an ecommerce website developed with MERN stack. https://sparkleyk.vercel.app/
+![Sparkle Preview](./preview.png)
+
+Welcome to **Sparkle**, a full-featured e-commerce website developed using the MERN (MongoDB, Express, React, Node.js) stack. This platform provides a smooth and interactive shopping experience with a modern design, secure authentication, and responsive layout.
 
 ## Overview
 
-Sparkle is a MERN-stack ecommerce platform designed to provide users with a seamless shopping experience. It features a modern and responsive user interface built with React and Tailwind CSS. The backend is powered by Express and Node.js, using MongoDB as the database and JWT for authentication. dotenv is used for environment configuration, ensuring secure handling of sensitive information.
+Sparkle is built with the following technologies:
+
+- **Frontend**: React with Tailwind CSS for a responsive and modern user interface.
+- **Backend**: Node.js and Express for robust API handling and server-side operations.
+- **Database**: MongoDB for efficient data storage and retrieval.
+- **Authentication**: JWT-based user authentication for secure access.
+- **Environment Configuration**: `dotenv` to manage sensitive data securely.
 
 ## Features
 
-- User authentication and authorization using JWT
-- Secure password hashing
-- CRUD operations for managing products and users
-- Integration with MongoDB for data storage
-- Responsive design for optimal viewing on various devices
-- Easy environment configuration with dotenv
+- **User Authentication & Authorization**: Secure sign-in with JWT, ensuring privacy and access control.
+- **Product Management**: CRUD operations for managing products and user profiles.
+- **Secure Password Handling**: Secure password hashing for user accounts.
+- **Responsive Design**: Optimized for both mobile and desktop devices.
+- **Environment Variables**: Configured through `.env` for secure data handling.
 
 ## Installation
 
-To run Sparkle on your local machine, follow these steps:
+To run Sparkle locally, follow these steps:
 
-1. Clone the repository:
-git clone https://github.com/yugalkaushik/sparkle.git
+1. **Clone the repository:**
 
-2. Navigate to the project directory:
+    ```bash
+    git clone https://github.com/yugalkaushik/sparkle.git
+    ```
 
-3. Install dependencies for both frontend and backend:
+2. **Navigate to the project directory:**
 
+    ```bash
+    cd sparkle
+    ```
 
-4. Create a `.env` file in the `backend` directory and set your environment variables.
+3. **Install dependencies for both frontend and backend:**
 
-5. Also change the backend and frontend host accordingly.
+    ```bash
+    cd frontend
+    npm install
+    cd ../backend
+    npm install
+    ```
 
-6. Start the backend server.
+4. **Configure Environment Variables:**
+   - Create a `.env` file in the `backend` directory and add required variables such as `MONGODB_URI`, `JWT_SECRET`, etc.
+   - Update the frontend and backend hosts accordingly.
 
-7. Start the frontend development server.
+5. **Run the Backend Server:**
 
+    ```bash
+    npm run server
+    ```
+
+6. **Start the Frontend Development Server:**
+
+    ```bash
+    npm start
+    ```
 
 ## Contributing
-Contributions are welcome! If you'd like to contribute to Sparkle, please follow these guidelines:
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/my-feature`)
-3. Commit your changes (`git commit -am 'Add my feature'`)
-4. Push to the branch (`git push origin feature/my-feature`)
-5. Create a new Pull Request
+Contributions are welcome! Please fork the repository, create a new branch, and submit a pull request.
 
-## Contact
-For any inquiries or feedback, feel free to contact the project maintainer:
-- [Yugal Kaushik](https://github.com/yugalkaushik)
