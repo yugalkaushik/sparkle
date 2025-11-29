@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const cors = require("cors");
+const startKeepAlive = require('./utils/keepAlive');
 const User = require('./models/User');
 const productRoutes = require('./routes/productRoutes');
 const navLinkRoutes = require('./routes/navLinkRoutes');
@@ -18,6 +19,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5100;
+const KEEP_ALIVE_URL = process.env.KEEP_ALIVE_URL;
 
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -35,6 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
     res.send('Welcome to the backend server!');
 }); 
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ status: 'ok' });
+});
 
 // Routes
 app.use('/api/products', productRoutes);
@@ -131,6 +137,9 @@ mongoose.connect(process.env.MONGO_URI)
         console.log('Connected to MongoDB');
         app.listen(PORT, () => {
             console.log(`Server is listening on port ${PORT}`);
+            if (KEEP_ALIVE_URL) {
+                startKeepAlive(KEEP_ALIVE_URL, Number(process.env.KEEP_ALIVE_INTERVAL_MS));
+            }
         });
     })
     .catch((err) => {
